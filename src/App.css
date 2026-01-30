@@ -1,38 +1,611 @@
-.App {
-  text-align: center;
+/* ================= RESET ================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #a8b5a0 0%, #d4c5b0 100%);
   min-height: 100vh;
+}
+
+/* ================= LAYOUT ================= */
+.psit-layout {
+  min-height: 100vh;
+}
+
+/* ================= HEADER ================= */
+.psit-header {
+  background: linear-gradient(135deg, #6b7d65 0%, #8a9985 100%);
+  color: #f5f0e8;
+  padding: 35px 40px;
+  box-shadow: 0 4px 20px rgba(107, 125, 101, 0.3);
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.psit-header h1 {
+  font-size: 2.5em;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #f5f0e8;
+}
+
+.psit-header p {
+  font-size: 1.1em;
+  color: #e8dfd0;
+  opacity: 0.95;
+}
+
+/* ================= ACCOUNT SECTION ================= */
+.account-section {
+  position: relative;
+}
+
+.account-display {
+  background: rgba(245, 240, 232, 0.15);
+  padding: 12px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  transition: all 0.3s ease;
+  border: 2px solid rgba(245, 240, 232, 0.2);
+}
+
+.account-display:hover {
+  background: rgba(245, 240, 232, 0.25);
+  border-color: rgba(245, 240, 232, 0.4);
+}
+
+.account-info-header {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+}
+
+.account-label {
+  font-size: 0.75em;
+  color: #e8dfd0;
+  opacity: 0.9;
+}
+
+.account-address {
+  font-size: 1.1em;
+  font-weight: 600;
+  color: #f5f0e8;
+  font-family: 'Courier New', monospace;
+}
+
+.admin-badge {
+  background: linear-gradient(135deg, #d4c5b0 0%, #c4b5a0 100%);
+  color: #6b7d65;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 0.7em;
+  font-weight: 700;
+  margin-left: 10px;
+}
+
+.dropdown-arrow {
+  color: #f5f0e8;
+  font-size: 0.8em;
+}
+
+/* ================= ACCOUNT DROPDOWN ================= */
+.account-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 10px;
+  background: #f5f0e8;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(107, 125, 101, 0.3);
+  min-width: 250px;
+  overflow: hidden;
+  z-index: 1000;
+}
+
+.dropdown-item {
+  padding: 15px 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  color: #6b7d65;
+  font-family: 'Courier New', monospace;
+  border-bottom: 1px solid #e8dfd0;
+}
+
+.dropdown-item:last-child {
+  border-bottom: none;
+}
+
+.dropdown-item:hover {
+  background: linear-gradient(135deg, #a8b5a0 0%, #c4d0bc 100%);
+  color: #f5f0e8;
+}
+
+.dropdown-item.active {
+  background: #e8dfd0;
+  font-weight: 600;
+}
+
+.check-mark {
+  color: #6b7d65;
+  font-weight: 700;
+  font-size: 1.2em;
+}
+
+/* ================= BODY GRID ================= */
+.psit-body {
+  display: grid;
+  grid-template-columns: 260px 1fr 300px;
+  gap: 25px;
+  padding: 30px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* ================= LEFT SIDEBAR ================= */
+.psit-left {
+  background: #f5f0e8;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(107, 125, 101, 0.15);
+  height: fit-content;
+}
+
+.psit-left h3 {
+  color: #6b7d65;
+  font-size: 1.4em;
+  margin-bottom: 8px;
+}
+
+.psit-left > p {
+  color: #8a9985;
+  font-size: 0.9em;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #e8dfd0;
+}
+
+.menu-box p {
+  padding: 14px 12px;
+  margin: 5px 0;
+  border-radius: 8px;
+  color: #6b7d65;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.menu-box p:hover {
+  background: linear-gradient(135deg, #a8b5a0 0%, #c4d0bc 100%);
+  color: #f5f0e8;
+  transform: translateX(5px);
+}
+
+/* ================= ACCOUNT DETAILS IN SIDEBAR ================= */
+.account-details {
+  margin-top: 25px;
+  padding: 15px;
+  background: #faf8f4;
+  border-radius: 8px;
+  border: 2px solid #e8dfd0;
+}
+
+.account-details h4 {
+  color: #6b7d65;
+  margin-bottom: 10px;
+  font-size: 1em;
+}
+
+.full-address {
+  font-family: 'Courier New', monospace;
+  font-size: 0.75em;
+  color: #8a9985;
+  word-break: break-all;
+  line-height: 1.5;
+  margin: 10px 0;
+}
+
+.admin-text {
+  background: linear-gradient(135deg, #d4c5b0 0%, #c4b5a0 100%);
+  color: #6b7d65;
+  padding: 8px 12px;
+  border-radius: 6px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.85em;
+  margin-top: 10px;
+}
+
+/* ================= NO RECORDS MESSAGE ================= */
+.no-records {
+  text-align: center;
+  color: #a8b5a0;
+  padding: 40px 20px;
+  font-style: italic;
+}
+
+/* ================= MAIN CONTENT ================= */
+.psit-main {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+/* ================= CARDS ================= */
+.card {
+  background: #f5f0e8;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(107, 125, 101, 0.15);
+}
+
+.card h2 {
+  color: #6b7d65;
+  font-size: 1.6em;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #e8dfd0;
+}
+
+.card h3 {
+  color: #6b7d65;
+  font-size: 1.2em;
+  margin-bottom: 15px;
+}
+
+.card p {
+  color: #8a9985;
+  margin: 10px 0;
+  font-size: 1em;
+}
+
+/* ================= CONNECT BUTTON ================= */
+.connect-btn {
+  display: block;
+  margin: 60px auto;
+  padding: 18px 50px;
+  font-size: 1.2em;
+  background: linear-gradient(135deg, #6b7d65 0%, #8a9985 100%);
+  color: #f5f0e8;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  box-shadow: 0 8px 20px rgba(107, 125, 101, 0.3);
+  transition: all 0.3s ease;
+}
+
+.connect-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(107, 125, 101, 0.4);
+}
+
+/* ================= FORM ELEMENTS ================= */
+textarea,
+select {
+  width: 100%;
+  padding: 15px;
+  background: #faf8f4;
+  border: 2px solid #e8dfd0;
+  border-radius: 8px;
+  font-size: 1em;
+  margin: 10px 0;
+  color: #6b7d65;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  transition: all 0.3s ease;
+}
+
+textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: #8a9985;
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(138, 153, 133, 0.1);
+}
+
+textarea::placeholder {
+  color: #b8c4b0;
+}
+
+/* ================= SUBMIT BUTTON ================= */
+.submit-btn {
+  padding: 14px 40px;
+  background: linear-gradient(135deg, #6b7d65 0%, #8a9985 100%);
+  color: #f5f0e8;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1.05em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(107, 125, 101, 0.25);
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(107, 125, 101, 0.35);
+}
+
+.submit-btn:disabled {
+  background: #c4d0bc;
+  cursor: not-allowed;
+  transform: none;
+  opacity: 0.6;
+}
+
+/* ================= FIR ROWS ================= */
+.fir-row {
+  background: #faf8f4;
+  border: 2px solid #e8dfd0;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 15px;
+  transition: all 0.3s ease;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.fir-row:hover {
+  border-color: #a8b5a0;
+  box-shadow: 0 4px 15px rgba(107, 125, 101, 0.15);
+  transform: translateX(3px);
+}
+
+.fir-content {
+  flex: 1;
+}
+
+.fir-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.fir-row strong {
+  color: #6b7d65;
+  font-size: 1.1em;
+}
+
+.fir-details {
+  color: #8a9985;
+  margin: 8px 0;
+  line-height: 1.6;
+}
+
+.fir-info {
+  display: flex;
+  gap: 15px;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #e8dfd0;
+  flex-wrap: wrap;
+}
+
+.info-item {
+  font-size: 0.9em;
+  color: #8a9985;
+}
+
+.info-item strong {
+  font-size: 0.9em;
+  margin-right: 5px;
+}
+
+/* Status Badges */
+.status-badge {
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.85em;
+  font-weight: 600;
+}
+
+.status-registered {
+  background: linear-gradient(135deg, #3498db 0%, #5dade2 100%);
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.status-investigating {
+  background: linear-gradient(135deg, #f39c12 0%, #f8b739 100%);
+  color: white;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.status-closed {
+  background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+  color: white;
+}
+
+/* Admin Actions */
+.admin-actions {
+  display: flex;
+  align-items: center;
+}
+
+.status-update-btn {
+  padding: 12px 24px;
+  background: linear-gradient(135deg, #6b7d65 0%, #8a9985 100%);
+  color: #f5f0e8;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.status-update-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(107, 125, 101, 0.3);
+}
+
+.status-update-btn:disabled {
+  background: #c4d0bc;
+  cursor: not-allowed;
+  transform: none;
+  opacity: 0.6;
+}
+
+.fir-row p {
+  color: #8a9985;
+  margin: 8px 0;
+  line-height: 1.6;
+}
+
+.fir-meta {
+  display: flex;
+  gap: 20px;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #e8dfd0;
+  font-size: 0.9em;
+  color: #a8b5a0;
+  flex-wrap: wrap;
+}
+
+.fir-meta span {
+  background: #e8dfd0;
+  padding: 4px 12px;
+  border-radius: 15px;
+  color: #6b7d65;
+  font-weight: 500;
+}
+
+/* ================= RIGHT SIDEBAR ================= */
+.psit-right {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.psit-right .card {
+  padding: 20px;
+}
+
+.psit-right .card p {
+  padding: 8px 0;
+  border-bottom: 1px solid #e8dfd0;
+}
+
+.psit-right .card p:last-child {
+  border-bottom: none;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 1024px) {
+  .psit-body {
+    grid-template-columns: 1fr;
   }
-  to {
-    transform: rotate(360deg);
+  
+  .psit-left,
+  .psit-right {
+    display: none;
   }
+}
+
+@media (max-width: 768px) {
+  .psit-header h1 {
+    font-size: 2em;
+  }
+  
+  .card {
+    padding: 20px;
+  }
+}
+
+/* ================= NETWORK STATUS ================= */
+.network-warning {
+  background: #f5f0e8;
+  padding: 25px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  border: 2px solid;
+  box-shadow: 0 5px 15px rgba(107, 125, 101, 0.15);
+}
+
+.network-warning.error {
+  border-color: #d9534f;
+  background: #fdf5f5;
+}
+
+.network-warning.warning {
+  border-color: #f0ad4e;
+  background: #fffbf5;
+}
+
+.network-warning.success {
+  border-color: #5cb85c;
+  background: #f5fbf5;
+}
+
+.network-warning strong {
+  display: block;
+  font-size: 1.2em;
+  margin-bottom: 12px;
+  color: #6b7d65;
+}
+
+.network-warning.error strong {
+  color: #d9534f;
+}
+
+.network-warning.warning strong {
+  color: #f0ad4e;
+}
+
+.network-warning.success strong {
+  color: #5cb85c;
+}
+
+.network-warning p {
+  margin: 8px 0;
+  color: #6b7d65;
+  line-height: 1.6;
+}
+
+.network-hint {
+  font-size: 0.9em;
+  font-style: italic;
+  color: #8a9985;
+  margin-top: 12px;
+}
+
+.install-link {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 12px 25px;
+  background: linear-gradient(135deg, #6b7d65 0%, #8a9985 100%);
+  color: #f5f0e8;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.install-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(107, 125, 101, 0.35);
 }
